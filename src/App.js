@@ -12,7 +12,6 @@ function App() {
     <div>
       <Div>Test
       <i className="fa-thin fa-w"></i>
-
       </Div>
     </div>
   );
