@@ -13,7 +13,6 @@ const HeaderContainer = ({ className }) => (
   <header className={className}>
     <Logo />
     <Descryption>
-      
       Web Technology <br/> Coding <br/> Development <br/>
     </Descryption>
     <ControlPanel />

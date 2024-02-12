@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components/header/header.jsx";
 import { Footer } from "./components/header/components/footer/footer.jsx";
+import { Authorization } from "./pages/authorization/authorization";
 
 const Content = styled.div`
   text-align: center;
@@ -36,11 +37,9 @@ function Blog() {
       <Header />
 
       <Content>
-        Test
-        <i className="fa-thin fa-w"></i>
         <Routes>
           <Route path="/" element={<H2>Main</H2>} />
-          <Route path="/login" element={<div>Login</div>} />
+          <Route path="/login" element={<Authorization />} />
           <Route path="/register" element={<div>Register</div>} />
           <Route path="/users" element={<div>Users</div>} />
           <Route path="/post/post:id" element={<div>Single Post</div>} />
