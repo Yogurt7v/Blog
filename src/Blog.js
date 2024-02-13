@@ -1,18 +1,15 @@
 import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components/header/header.jsx";
-import { Footer } from "./components/header/components/footer/footer.jsx";
+import { Footer } from "./components/footer/footer.jsx";
 import { Authorization } from "./pages/authorization/authorization";
+import { H2 } from "./components/h2/h2";
 
 const Content = styled.div`
   text-align: center;
   padding: 120px 0;
 `;
 
-const H2 = styled.h2`
-  font-size: 1.5em;
-  text-align: center;
-`;
 
 const AppColumn = styled.div`
   display: flex;
@@ -25,11 +22,6 @@ const AppColumn = styled.div`
 `;
 
 
-
-
-// const Footer = () => {
-//   return <div>Footer</div>;
-// };
 
 function Blog() {
   return (

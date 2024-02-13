@@ -45,5 +45,4 @@ export const Footer = styled(FooterContainer)`
     box-shadow: 0px -6px 19px 14px rgba(34, 60, 80, 0.44);
     font-weight: 600;
     font-size: 14px;
-
 `;
