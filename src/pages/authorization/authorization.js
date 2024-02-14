@@ -1,13 +1,15 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { server } from "../../Bff/";
+import { server } from "../../Bff/server";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {  useDispatch } from "react-redux";
 import Input from "../../components/input/input";
 import Button from "../../components/button/button";
 import H2 from "../../components/h2/h2";
 import styled from "styled-components";
+import {setUser} from "../../actions"
 
 const StyledLink = styled(Link)`
   text-decoration: underline;
@@ -67,11 +69,18 @@ const AuthorizationContainer = ({ className }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [serverError, setServerError] = useState(null);
 
+  const dispatch = useDispatch();
+
   const onSubmit = ({ login, password }) => {
-    server.authorize(login, password).then((error, res) => {
-      if (error) {
+    server.authorize(login, password).then(({error, res}) => {
+      console.log(res);
+      if (!error) {
         setServerError(`Ошибка запроса ${error}`);
+        return;
       }
+      dispatch(setUser(res));
+      setServerError(null);
+
     });
   };
 
@@ -84,7 +93,7 @@ const AuthorizationContainer = ({ className }) => {
         <H2>Авторизация</H2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input type="text" placeholder="Login" {...register("login",{
-            onChange: () => setServerError(null),
+            // onChange: () => setServerError(null),
           })}></Input>
           <Input
             type="password"
