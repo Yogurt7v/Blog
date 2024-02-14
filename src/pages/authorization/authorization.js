@@ -73,13 +73,12 @@ const AuthorizationContainer = ({ className }) => {
 
   const onSubmit = ({ login, password }) => {
     server.authorize(login, password).then(({error, res}) => {
-      console.log(res);
       if (!error) {
         setServerError(`Ошибка запроса ${error}`);
         return;
       }
       dispatch(setUser(res));
-      setServerError(null);
+      /*ошибка где то тут*/
 
     });
   };
@@ -93,7 +92,6 @@ const AuthorizationContainer = ({ className }) => {
         <H2>Авторизация</H2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input type="text" placeholder="Login" {...register("login",{
-            // onChange: () => setServerError(null),
           })}></Input>
           <Input
             type="password"
