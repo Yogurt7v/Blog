@@ -73,21 +73,12 @@ const AuthorizationContainer = ({ className }) => {
 
   const onSubmit = ({ login, password }) => {
     server.authorize(login, password).then(({error, res}) => {
-<<<<<<< HEAD
-      console.log(res);
       if (error) {
-=======
-      if (!error) {
->>>>>>> bc4e4a97e676102db86bd8b359218a2c7be624b3
         setServerError(`Ошибка запроса ${error}`);
         return;
       }
       dispatch(setUser(res));
-<<<<<<< HEAD
-      // setServerError(null);
-=======
-      /*ошибка где то тут*/
->>>>>>> bc4e4a97e676102db86bd8b359218a2c7be624b3
+      setServerError(null);
 
     });
   };
@@ -101,10 +92,7 @@ const AuthorizationContainer = ({ className }) => {
         <H2>Авторизация</H2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input type="text" placeholder="Login" {...register("login",{
-<<<<<<< HEAD
             onChange: () => setServerError(null),
-=======
->>>>>>> bc4e4a97e676102db86bd8b359218a2c7be624b3
           })}></Input>
           <Input
             type="password"
