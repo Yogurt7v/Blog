@@ -3,48 +3,24 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { server } from "../../Bff/server";
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Input from "../../components/input/input";
-import Button from "../../components/button/button";
 import H2 from "../../components/h2/h2";
-import { useResetForm } from "../../hooks";
+import Button from "../../components/button/button";
+import Input from "../../components/input/input";
+import AuthFormError from "../../components/auth-form-error/auth-error";
+import {useResetForm} from "../../hooks";
 import styled from "styled-components";
-import {setUser} from "../../actions"
+import { setUser } from "../../actions";
 import { selectUserRole } from "../../selectors";
 import { ROLE } from "../../constants";
 
-const StyledLink = styled(Link)`
-  text-decoration: underline;
-`;
 
-const ErrorMessageDiv = styled.div`
-  color: red;
-  font-size: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 18px;
-  animation: myAnim 1.5s ease 0s 1 normal forwards;
 
-  @keyframes myAnim {
-    0% {
-      opacity: 0;
-      transform: translateY(-50px);
-    }
-  
-    % {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`;
-
-const authFormSchema = yup.object().shape({
+const regFormSchema = yup.object().shape({
   login: yup
     .string()
-    .required("Пустой логин")
+    .required("Заполните логин")
     .matches(/\w/, "Логин не подходит. Допускаются только буквы и цифры")
     .min(3, "Неверный логин. Логин слишком мал")
     .max(15, "Неверный логин. Логин слишком большой"),
@@ -54,8 +30,14 @@ const authFormSchema = yup.object().shape({
     .matches(/^[\w#%]+$/, "Допускаются только буквы, цифры и символы")
     .min(8, "Неверный пароль. Слишком мал. Не меньше 8 символов")
     .max(30, "Неверный пароль. Пароль слишком большой. Не больше 30 символов"),
+  passwordCheck: yup
+    .string()
+    .required("Пустой пароль")
+    .oneOf([yup.ref("password"), null], "Пароли должны совпадать!"),
 });
-const AuthorizationContainer = ({ className }) => {
+
+
+const RegistrationContainer = ({ className }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const {
     register,
@@ -66,62 +48,78 @@ const AuthorizationContainer = ({ className }) => {
     defaultValues: {
       login: "",
       password: "",
+      passwordCheck: "",
     },
-    resolver: yupResolver(authFormSchema),
+    resolver: yupResolver(regFormSchema),
   });
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [serverError, setServerError] = useState();
-  const roleId  = useSelector (selectUserRole);
+
+  const roleId = useSelector(selectUserRole);
 
   const dispatch = useDispatch();
 
   useResetForm(reset);
 
   const onSubmit = ({ login, password }) => {
-    server.authorize(login, password).then(({error, res}) => {
+    server.register(login, password).then(({ error, res }) => {
       if (error) {
         setServerError(`Ошибка запроса ${error}`);
         return;
       }
       dispatch(setUser(res));
-      setServerError(null);
-
     });
   };
 
-  const formError = errors?.login?.message || errors?.password?.message;
+  const formError = errors?.login?.message || errors?.password?.message || errors?.passwordCheck?.message;
   const errorMessage = formError || serverError;
 
-  if(roleId !== ROLE.GUEST){
-    return <Navigate to="/"/>;
+  if (roleId !== ROLE.GUEST) {
+    return <Navigate to="/" />;
   }
 
   return (
     <>
       <div className={className}>
-        <H2>Авторизация</H2>
+        <H2>Регистрация</H2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Input type="text" placeholder="Login" {...register("login",{
-            onChange: () => setServerError(null),
-          })}></Input>
+          <Input
+            type="text"
+            placeholder="Логин"
+            {...register("login", {
+              onChange: () => setServerError(null),
+            })}
+          ></Input>
           <Input
             type="password"
-            placeholder="Password"
+            placeholder="Пароль"
             autoComplete="on"
-            {...register("password")}
+            {...register("password", {
+                onChange: () => setServerError(null),
+            })}
           ></Input>
-          <Button type="submit" disabled={!!formError} children={"Авторизоваться"}>
-          </Button>
-          {errorMessage && <ErrorMessageDiv>{errorMessage}</ErrorMessageDiv>} 
-            <StyledLink to="/register">Регистрация</StyledLink>
+          <Input
+            type="password"
+            placeholder="Повтор пароля"
+            autoComplete="on"
+            {...register("passwordCheck", {
+                onChange: () => setServerError(null),
+            })}
+          ></Input>
+          <Button
+            type="submit"
+            disabled={!!formError}
+            children={"Зарегистрироваться"}
+          ></Button>
+          {errorMessage && <AuthFormError>{errorMessage}</AuthFormError>}
         </form>
       </div>
     </>
   );
 };
 
-export const Authorization = styled(AuthorizationContainer)`
+export const Registration = styled(RegistrationContainer)`
   display: flex;
   flex-direction: column;
   allign-items: center;

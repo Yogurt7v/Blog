@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components/header/header.jsx";
 import { Footer } from "./components/footer/footer.jsx";
-import { Authorization } from "./pages/authorization/authorization";
+import { Authorization, Registration } from "./pages";
 import { H2 } from "./components/h2/h2";
 
 const Content = styled.div`
@@ -32,7 +32,7 @@ function Blog() {
         <Routes>
           <Route path="/" element={<H2>Main</H2>} />
           <Route path="/login" element={<Authorization />} />
-          <Route path="/register" element={<div>Register</div>} />
+          <Route path="/register" element={< Registration />} />
           <Route path="/users" element={<div>Users</div>} />
           <Route path="/post/post:id" element={<div>Single Post</div>} />
           <Route path="*" element={<div>Error Page</div>} />
