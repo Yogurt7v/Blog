@@ -5,7 +5,11 @@ import Button from "../../../button/button";
 import { ROLE } from "../../../../constants";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../../../actions";
-import { selectUserRole, selectUserLogin, selectUserSession } from "../../../..//selectors";
+import {
+  selectUserRole,
+  selectUserLogin,
+  selectUserSession,
+} from "../../../..//selectors";
 
 const RightAligned = styled.div`
   display: flex;
@@ -31,24 +35,22 @@ const ControlPanelContainer = ({ className }) => {
   return (
     <div className={className}>
       <RightAligned>
-        <Button>
-          {roleId === ROLE.GUEST ? (
-            <StyledLink to="/login">Войти</StyledLink>
-          ) : (
-            <>
-              <div>{login}</div>
-              <div onClick={() => dispatch(logout(session))}>
-                <Link>
-                  <Icon
-                    id="fa-sign-out"
-                    size="24px"
-                    margin="10px 15px 10px 0"
-                  />
-                </Link>
-              </div>
-            </>
-          )}
-        </Button>
+        {roleId === ROLE.GUEST ? (
+          <Button>
+            <Link to="/login">Войти</Link>
+          </Button>
+        ) : (
+          <>
+            <StyledLink onClick={() => dispatch(logout(session))}>
+            <div>{login}</div>
+              <Icon
+                id="fa-solid fa-right-from-bracket"
+                size="24px"
+                margin="10px 15px 10px 0"
+              />
+            </StyledLink>
+          </>
+        )}
       </RightAligned>
       <RightAligned>
         <div onClick={() => nav(-1)}>
