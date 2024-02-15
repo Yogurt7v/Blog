@@ -10,7 +10,7 @@ import Button from "../../components/button/button";
 import H2 from "../../components/h2/h2";
 import { useResetForm } from "../../hooks";
 import styled from "styled-components";
-import {setUser} from "../../actions"
+import { setUser } from "../../actions";
 import { selectUserRole } from "../../selectors";
 import { ROLE } from "../../constants";
 
@@ -33,7 +33,7 @@ const ErrorMessageDiv = styled.div`
       opacity: 0;
       transform: translateY(-50px);
     }
-  
+
     % {
       opacity: 1;
       transform: translateY(0);
@@ -45,7 +45,7 @@ const authFormSchema = yup.object().shape({
   login: yup
     .string()
     .required("Пустой логин")
-    .matches(/\w/, "Логин не подходит. Допускаются только буквы и цифры")
+    .matches(/\w+$/, "Логин не подходит. Допускаются только буквы и цифры")
     .min(3, "Неверный логин. Логин слишком мал")
     .max(15, "Неверный логин. Логин слишком большой"),
   password: yup
@@ -72,29 +72,28 @@ const AuthorizationContainer = ({ className }) => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [serverError, setServerError] = useState();
-  const roleId  = useSelector (selectUserRole);
+  const roleId = useSelector(selectUserRole);
 
   const dispatch = useDispatch();
 
   useResetForm(reset);
 
   const onSubmit = ({ login, password }) => {
-    server.authorize(login, password).then(({error, res}) => {
+    server.authorize(login, password).then(({ error, res }) => {
       if (error) {
         setServerError(`Ошибка запроса ${error}`);
         return;
       }
       dispatch(setUser(res));
       setServerError(null);
-
     });
   };
 
   const formError = errors?.login?.message || errors?.password?.message;
   const errorMessage = formError || serverError;
 
-  if(roleId !== ROLE.GUEST){
-    return <Navigate to="/"/>;
+  if (roleId !== ROLE.GUEST) {
+    return <Navigate to="/" />;
   }
 
   return (
@@ -102,19 +101,28 @@ const AuthorizationContainer = ({ className }) => {
       <div className={className}>
         <H2>Авторизация</H2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Input type="text" placeholder="Login" {...register("login",{
-            onChange: () => setServerError(null),
-          })}></Input>
+          <Input
+            type="text"
+            placeholder="Login"
+            {...register("login", {
+              onChange: () => setServerError(null),
+            })}
+          ></Input>
           <Input
             type="password"
             placeholder="Password"
             autoComplete="on"
-            {...register("password")}
+            {...register("password", {
+              onChange: () => setServerError(null),
+            })}
           ></Input>
-          <Button type="submit" disabled={!!formError} children={"Авторизоваться"}>
-          </Button>
-          {errorMessage && <ErrorMessageDiv>{errorMessage}</ErrorMessageDiv>} 
-            <StyledLink to="/register">Регистрация</StyledLink>
+          <Button
+            type="submit"
+            disabled={!!formError}
+            children={"Авторизоваться"}
+          ></Button>
+          {errorMessage && <ErrorMessageDiv>{errorMessage}</ErrorMessageDiv>}
+          <StyledLink to="/register">Регистрация</StyledLink>
         </form>
       </div>
     </>

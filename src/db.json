@@ -8,24 +8,10 @@
       "role_id": 0
     },
     {
-      "id": "c9c4",
+      "id": "c463",
       "login": "ivan",
       "password": "qwerty123",
-      "registed_at": "2033-05-21 03:24",
-      "role_id": 2
-    },
-    {
-      "id": "96b6",
-      "login": "ivan",
-      "password": "qwerty123",
-      "registed_at": "2033-05-26 18:24",
-      "role_id": 2
-    },
-    {
-      "id": "0300",
-      "login": "ivan",
-      "password": "qwerty123",
-      "registed_at": "2033-05-26 01:03",
+      "registed_at": "2033-05-28 12:01",
       "role_id": 2
     }
   ],

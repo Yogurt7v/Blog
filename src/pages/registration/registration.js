@@ -21,7 +21,7 @@ const regFormSchema = yup.object().shape({
   login: yup
     .string()
     .required("Заполните логин")
-    .matches(/\w/, "Логин не подходит. Допускаются только буквы и цифры")
+    .matches(/\w+$/, "Логин не подходит. Допускаются только буквы и цифры")
     .min(3, "Неверный логин. Логин слишком мал")
     .max(15, "Неверный логин. Логин слишком большой"),
   password: yup
@@ -30,7 +30,7 @@ const regFormSchema = yup.object().shape({
     .matches(/^[\w#%]+$/, "Допускаются только буквы, цифры и символы")
     .min(8, "Неверный пароль. Слишком мал. Не меньше 8 символов")
     .max(30, "Неверный пароль. Пароль слишком большой. Не больше 30 символов"),
-  passwordCheck: yup
+  passcheck: yup
     .string()
     .required("Пустой пароль")
     .oneOf([yup.ref("password"), null], "Пароли должны совпадать!"),
@@ -48,7 +48,7 @@ const RegistrationContainer = ({ className }) => {
     defaultValues: {
       login: "",
       password: "",
-      passwordCheck: "",
+      passcheck: "",
     },
     resolver: yupResolver(regFormSchema),
   });
@@ -72,7 +72,7 @@ const RegistrationContainer = ({ className }) => {
     });
   };
 
-  const formError = errors?.login?.message || errors?.password?.message || errors?.passwordCheck?.message;
+  const formError = errors?.login?.message || errors?.password?.message || errors?.passcheck?.message;
   const errorMessage = formError || serverError;
 
   if (roleId !== ROLE.GUEST) {
@@ -88,7 +88,7 @@ const RegistrationContainer = ({ className }) => {
             type="text"
             placeholder="Логин"
             {...register("login", {
-              onChange: () => setServerError(null),
+                onChange: () => setServerError(null),
             })}
           ></Input>
           <Input
@@ -103,7 +103,7 @@ const RegistrationContainer = ({ className }) => {
             type="password"
             placeholder="Повтор пароля"
             autoComplete="on"
-            {...register("passwordCheck", {
+            {...register("passcheck", {
                 onChange: () => setServerError(null),
             })}
           ></Input>
