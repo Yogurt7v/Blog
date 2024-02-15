@@ -2,14 +2,16 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { server } from "../../Bff/server";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import {  useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { useDispatch, useStore, useSelector } from "react-redux";
 import Input from "../../components/input/input";
 import Button from "../../components/button/button";
 import H2 from "../../components/h2/h2";
 import styled from "styled-components";
 import {setUser} from "../../actions"
+import { selectUserRole } from "../../selectors";
+import { ROLE } from "../../constants";
 
 const StyledLink = styled(Link)`
   text-decoration: underline;
@@ -56,6 +58,7 @@ const AuthorizationContainer = ({ className }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -68,8 +71,23 @@ const AuthorizationContainer = ({ className }) => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [serverError, setServerError] = useState();
+  const store = useStore();
+  const roleId  = useSelector (selectUserRole);
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    let currentWasLogout = store.getState().app.wasLogout;
+
+    // eslint-disable-next-line no-unused-vars
+    const unSubscribe = store.subscribe(() => {
+     let prevWasLogout = currentWasLogout;
+     currentWasLogout = store.getState().app.wasLogout;
+
+     if (currentWasLogout !== prevWasLogout) {
+       reset();
+     }
+    })
+  }, [reset, store]);
 
   const onSubmit = ({ login, password }) => {
     server.authorize(login, password).then(({error, res}) => {
@@ -85,6 +103,10 @@ const AuthorizationContainer = ({ className }) => {
 
   const formError = errors?.login?.message || errors?.password?.message;
   const errorMessage = formError || serverError;
+
+  if(roleId !== ROLE.GUEST){
+    return <Navigate to="/"/>;
+  }
 
   return (
     <>

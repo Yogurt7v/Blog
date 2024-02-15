@@ -27,6 +27,7 @@ const StyledLink = styled(Link)`
 
 const UserName = styled.div`
   display: flex;
+  justify-content: flex-end;
   font-weight: 700;
   font-size: 18px;
   margin-right: 10px;
@@ -48,7 +49,7 @@ const ControlPanelContainer = ({ className }) => {
           </Button>
         ) : (
           <>
-            <StyledLink onClick={() => dispatch(logout(session))}>
+            <StyledLink  onClick={() => dispatch(logout(session))}>
               <UserName>{login}</UserName>
               <Icon
                 id="fa-solid fa-right-from-bracket"

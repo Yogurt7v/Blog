@@ -3,6 +3,7 @@ import { Logo, ControlPanel } from "./components";
 
 const Descryption = styled.div`
   margin-right: 90px;
+  padding-right: 90px;
   font-size: 18px;
   font-weight: 400;
   font-style: italic;

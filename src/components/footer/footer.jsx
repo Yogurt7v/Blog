@@ -42,7 +42,7 @@ export const Footer = styled(FooterContainer)`
     width: 1000px;
     position:fixed;
     bottom: 0;
-    box-shadow: 0px -6px 19px 14px rgba(34, 60, 80, 0.44);
+    box-shadow: 0px -6px 19px 4px rgba(34, 60, 80, 0.44);
     font-weight: 600;
     font-size: 14px;
 `;
