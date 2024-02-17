@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import {Icon} from "../../components/icon/icon";
-import { ROLE } from "../../constants";
+import {Icon} from "../../../../components/icon/icon";
+// import { TableRow } from "../table-row/table-row";
+// import { ROLE } from "../../../../constants/role";
 
  const UserRowContainer = ({ className, login, registeredAt, roleId : userRoleId}) => {
 
@@ -44,4 +45,5 @@ import { ROLE } from "../../constants";
 };
 
 
-export const UserRow = styled(UserRowContainer)``;
+export const UserRow = styled(UserRowContainer)`
+`;

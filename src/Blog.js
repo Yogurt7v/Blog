@@ -4,6 +4,7 @@ import { Header } from "./components/header/header.jsx";
 import { Footer } from "./components/footer/footer.jsx";
 import { Authorization, Registration } from "./pages";
 import { H2 } from "./components/h2/h2";
+import { Users } from "./pages/users/user.js";
 
 const Content = styled.div`
   text-align: center;
@@ -33,7 +34,7 @@ function Blog() {
           <Route path="/" element={<H2>Main</H2>} />
           <Route path="/login" element={<Authorization />} />
           <Route path="/register" element={< Registration />} />
-          <Route path="/users" element={<div>Users</div>} />
+          <Route path="/users" element={<Users />} />
           <Route path="/post/post:id" element={<div>Single Post</div>} />
           <Route path="*" element={<div>Error Page</div>} />
           <Route path="/post/" element={<div>New Post</div>} />
