@@ -18,12 +18,6 @@ const RightAligned = styled.div`
   color: black;
 `;
 
-const StyledLink = styled(Link)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-`;
 
 const UserName = styled.div`
   display: flex;
@@ -49,14 +43,13 @@ const ControlPanelContainer = ({ className }) => {
           </Button>
         ) : (
           <>
-            <StyledLink  onClick={() => dispatch(logout(session))}>
               <UserName>{login}</UserName>
-              <Icon
+              <Icon 
                 id="fa-solid fa-right-from-bracket"
                 size="24px"
                 margin="10px 0px 10px 0"
+                onClick={() => dispatch(logout(session))}
               />
-            </StyledLink>
           </>
         )}
       </RightAligned>
