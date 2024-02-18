@@ -3,9 +3,9 @@ import { sessions } from "../sessions";
 import { getUsers } from "../api/get-users";
 
 export const fetchUsers = async (userSession) => {
-    const accesRoles =[ROLE.ADMIN] 
+    const accessRoles =[ROLE.ADMIN] 
 
-    if (sessions.access(userSession, accesRoles)) {
+    if (!sessions.access(userSession, accessRoles)) {
       return {
         error: "Доступ запрещен",
         res: null,

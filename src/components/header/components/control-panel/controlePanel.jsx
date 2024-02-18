@@ -37,6 +37,7 @@ const ControlPanelContainer = ({ className }) => {
   const login = useSelector(selectUserLogin);
   const session = useSelector(selectUserSession);
 
+  
   return (
     <div className={className}>
       <RightAligned>

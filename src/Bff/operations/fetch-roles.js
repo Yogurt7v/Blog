@@ -1,11 +1,11 @@
-import { ROLE } from "../constants/role";
+import { ROLE } from "../constants/";
 import { sessions } from "../sessions";
 import { getRoles } from "../api/get-roles";
 
 export const fetchRoles = async (userSession) => {
-    const accesRoles = [ROLE.ADMIN] 
+    const accessRoles = [ROLE.ADMIN]
 
-    if (sessions.access(userSession, accesRoles)) {
+    if (!sessions.access(userSession, accessRoles)) {
       return {
         error: "Доступ запрещен",
         res: null,

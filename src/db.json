@@ -13,23 +13,30 @@
       "password": "qwerty123",
       "registed_at": "2033-05-28 12:01",
       "role_id": 2
+    },
+    {
+      "id": "890a",
+      "login": "ivan12",
+      "password": "qwerty123",
+      "registed_at": "2033-05-25 07:07",
+      "role_id": 2
     }
   ],
   "roles": [
     {
-      "id": 0,
+      "id": "0",
       "name": "Admin"
     },
     {
-      "id": 1,
+      "id": "1",
       "name": "Moderator"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "User"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Guest"
     }
   ],
