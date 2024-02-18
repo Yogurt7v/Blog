@@ -1,9 +1,7 @@
-export const transformUser = (dbUser) => {
-    return {
+export const transformUser = (dbUser) => ({
         id: dbUser.id,
         login: dbUser.login,
         roleId: dbUser.role_id,
         password: dbUser.password,
-        registedAt: dbUser.registed_at,
-    };
-}
+        registeredAt: dbUser.registed_at,
+})

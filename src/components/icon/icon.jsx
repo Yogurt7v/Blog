@@ -14,4 +14,9 @@ export const Icon = styled(IconContainer)`
   justify-content: center;
   align-items: center;
   height: 30px;
+  color: ${({ disabled }) => (disabled ? "gray" : "black")};
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

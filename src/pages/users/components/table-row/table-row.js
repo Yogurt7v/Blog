@@ -11,8 +11,11 @@ const TableRowContainer = ({className,children}) =>{
 export  const TableRow = styled(TableRowContainer)`
     display: flex;
     align-items: center;
+    justify-content: space-between;
+
 
     & > div {
+        display: flex;
         paddinng: 0 10px;
     }
 

@@ -3,6 +3,7 @@ import { H2 , Content} from "../../components";
 import { UserRow, TableRow,  } from "./components";
 import { useServerRequest } from "../../hooks";
 import { useEffect, useState } from "react";
+import { ROLE } from "../../constants/role";
 
 const UsersContainer = ({ className }) => {
   const [users, setUsers] = useState([]);
@@ -44,7 +45,7 @@ const UsersContainer = ({ className }) => {
               login={login}
               registeredAt={registeredAt}
               roleId={roleId}
-              roles={roles}
+              roles={roles.filter(({roleId})=> roleId !== ROLE.GUEST)}
             />
           ))}
         </div>
@@ -57,6 +58,7 @@ export const Users = styled(UsersContainer)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 570px;
   margin: 0 auto;
+  width: 570px;
+  font-size: 16px;
 `;

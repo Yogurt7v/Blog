@@ -41,7 +41,7 @@ const ControlPanelContainer = ({ className }) => {
     <div className={className}>
       <RightAligned>
         {roleId === ROLE.GUEST ? (
-          <Button>
+          <Button width={"100px"} onClick={() => nav("/login")}>
             <Link to="/login">Войти</Link>
           </Button>
         ) : (
@@ -52,6 +52,7 @@ const ControlPanelContainer = ({ className }) => {
                 id="fa-solid fa-right-from-bracket"
                 size="24px"
                 margin="10px 0px 10px 0"
+                color="red"
               />
             </Exitbtn>
           </>
