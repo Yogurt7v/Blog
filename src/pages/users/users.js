@@ -24,18 +24,6 @@ const UsersContainer = ({ className }) => {
         setUsers(usersRes);
         setRoles(rolesRes);
     });
-    reqeustServer(`fetchRoles`).then((rolesError, res) => {
-      if (rolesError) {
-        return;
-      }
-      setRoles(res);
-    });
-
-    reqeustServer(`fetchUsers`).then((usersError, res) => {
-      if (usersError) {
-        return;
-      }
-    })
   }, []);
 
   return (
