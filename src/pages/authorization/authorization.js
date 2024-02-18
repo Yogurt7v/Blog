@@ -12,7 +12,7 @@ import { useResetForm } from "../../hooks";
 import styled from "styled-components";
 import { setUser } from "../../actions";
 import { selectUserRole } from "../../selectors";
-import { ROLE } from "../../constants";
+import { ROLE } from "../../constants/role";
 
 const StyledLink = styled(Link)`
   text-decoration: underline;

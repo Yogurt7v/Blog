@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Icon } from "../../../icon/icon";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../button/button";
-import { ROLE } from "../../../../constants";
+import { ROLE } from "../../../../constants/role";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../../../actions";
 import {

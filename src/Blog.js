@@ -4,9 +4,9 @@ import { Header } from "./components/header/header.jsx";
 import { Footer } from "./components/footer/footer.jsx";
 import { Authorization, Registration } from "./pages";
 import { H2 } from "./components/h2/h2";
-import { Users } from "./pages/users/user.js";
+import { Users } from "./pages/users/users";
 
-const Content = styled.div`
+const Page = styled.div`
   text-align: center;
   padding: 120px 0;
 `;
@@ -29,7 +29,7 @@ function Blog() {
     <AppColumn>
       <Header />
 
-      <Content>
+      <Page>
         <Routes>
           <Route path="/" element={<H2>Main</H2>} />
           <Route path="/login" element={<Authorization />} />
@@ -39,7 +39,7 @@ function Blog() {
           <Route path="*" element={<div>Error Page</div>} />
           <Route path="/post/" element={<div>New Post</div>} />
         </Routes>
-      </Content>
+      </Page>
 
       <Footer />
     </AppColumn>

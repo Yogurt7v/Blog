@@ -1,5 +1,5 @@
 import { ACTION_TYPE } from "../actions";
-import { ROLE } from "../constants";
+import { ROLE } from "../constants/role";
 
 const initialUserState = {
     id: null,
