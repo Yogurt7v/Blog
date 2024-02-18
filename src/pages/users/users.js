@@ -14,17 +14,18 @@ const UsersContainer = ({ className }) => {
   useEffect(() => {
 
     Promise.all([
-      reqeustServer(`fetchRoles`),
-       reqeustServer(`fetchUsers`)
-      ]).then(([usersRes, rolesRes]) => {
+      reqeustServer(`fetchUsers`),reqeustServer(`fetchRoles`)]).then(
+        ([usersRes, rolesRes]) => {
         if(usersRes.error || rolesRes.error){
           setErrorMessage(usersRes.error || rolesRes.error);
           return;
         }
-        setUsers(usersRes);
-        setRoles(rolesRes);
+
+        setUsers(usersRes.res);
+        setRoles(rolesRes.res);
+
     });
-  }, []);
+  }, [reqeustServer]);
 
   return (
     <div className={className}>

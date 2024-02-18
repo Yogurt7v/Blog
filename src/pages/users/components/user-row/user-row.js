@@ -4,9 +4,8 @@ import {Icon} from "../../../../components/icon/icon";
 // import { TableRow } from "../table-row/table-row";
 // import { ROLE } from "../../../../constants/role";
 
- const UserRowContainer = ({ className, login, registeredAt, roleId : userRoleId}) => {
+ const UserRowContainer = ({ className, login, registeredAt, roles, roleId : userRoleId}) => {
 
-    const roles = [];
     const dispatch = useDispatch();
 
     const onRoleChange = () => {
@@ -21,7 +20,7 @@ import {Icon} from "../../../../components/icon/icon";
           <div className="role-colomn">
             <select value={userRoleId} onChange={onRoleChange}>
               {roles.map(({ id: roleId, name: roleName }) => (
-                <option value={roleId}>{roleName}</option>
+                <option key = {roleId} value={roleId}>{roleName}</option>
               ))}
             </select>
             <Icon

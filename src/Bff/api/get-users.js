@@ -1,5 +1,6 @@
-export const getUsers = () => fetch("http://localhost:3004/users").then(
-    (loadedUsers) => loadedUsers.json()
-  );
+import { transformUser } from "../transformers";
 
-  export default getUsers
+export const getUsers = () => fetch("http://localhost:3004/users")
+  .then((loadedUsers) => loadedUsers.json()
+  .then ((loadedUsers) => loadedUsers && loadedUsers.map(transformUser)),
+  );

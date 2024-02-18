@@ -18,13 +18,16 @@ const RightAligned = styled.div`
   color: black;
 `;
 
-
 const UserName = styled.div`
   display: flex;
   justify-content: flex-end;
   font-weight: 700;
   font-size: 18px;
   margin-right: 10px;
+`;
+
+const Exitbtn = styled.div`
+  cursor: pointer;
 `;
 
 const ControlPanelContainer = ({ className }) => {
@@ -43,13 +46,14 @@ const ControlPanelContainer = ({ className }) => {
           </Button>
         ) : (
           <>
-              <UserName>{login}</UserName>
-              <Icon 
+            <UserName>{login}</UserName>
+            <Exitbtn onClick={() => dispatch(logout(session))}>
+              <Icon
                 id="fa-solid fa-right-from-bracket"
                 size="24px"
                 margin="10px 0px 10px 0"
-                onClick={() => dispatch(logout(session))}
               />
+            </Exitbtn>
           </>
         )}
       </RightAligned>
