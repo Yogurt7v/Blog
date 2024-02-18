@@ -1,5 +1,5 @@
 
-export const setUserRole = (userId,roleId) =>
+export const setUserRole = (userId, roleId) =>
   fetch(`http://localhost:3004/users/${userId}`, {
     method: "PATCH",
     headers: {

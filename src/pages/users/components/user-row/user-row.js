@@ -20,12 +20,12 @@ const UserRowContainer = ({
   };
 
   const onRoleSave = (userId, newUserRoleId) => {
-    requestServer(`updateUserRole`, userId,newUserRoleId ).then(()=>{
+    console.log("onRoleSave");
+    requestServer(`updateUserRole`, userId, newUserRoleId).then(() => {
       setInitialRoleId(newUserRoleId);
-    })
-  }
+    });
+  };
   const isSaveButtonDisabled = selectedRoleId === initialRoleId;
-  
 
   return (
     <>
@@ -41,13 +41,15 @@ const UserRowContainer = ({
                 </option>
               ))}
             </select>
+            <div onClick={() => onRoleSave(id, selectedRoleId)}>
               <Icon
                 id="fa-regular fa-floppy-disk"
                 margin="0 10px 0 10px"
                 size="20px"
                 disabled={isSaveButtonDisabled}
-                onClick={()=> onRoleSave(id, selectedRoleId)}
+
               />
+            </div>
           </div>
         </div>
         <Icon
