@@ -1,4 +1,4 @@
 export *  from "./server";
-export *  from "./get-user";
-export *  from "./add-user";
+export *  from "./api/get-user";
+export *  from "./api/add-user";
 export *  from "./sessions"
