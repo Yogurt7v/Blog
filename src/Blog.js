@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components/header/header.jsx";
 import { Footer } from "./components/footer/footer.jsx";
-import { Authorization, Registration } from "./pages";
+import { Authorization, Registration,Post } from "./pages";
 import { H2 } from "./components/h2/h2";
 import { Users } from "./pages/users/users";
 
@@ -35,9 +35,9 @@ function Blog() {
           <Route path="/login" element={<Authorization />} />
           <Route path="/register" element={< Registration />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/post/post:id" element={<div>Single Post</div>} />
-          <Route path="*" element={<div>Error Page</div>} />
           <Route path="/post/" element={<div>New Post</div>} />
+          <Route path="/post/:id" element={<Post />} />
+          <Route path="*" element={<div>Error Page</div>} />
         </Routes>
       </Page>
 
