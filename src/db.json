@@ -13,13 +13,6 @@
       "password": "qwerty123",
       "registed_at": "2033-05-28 12:01",
       "role_id": 1
-    },
-    {
-      "id": "890a",
-      "login": "ivan12",
-      "password": "qwerty123",
-      "registed_at": "2033-05-25 07:07",
-      "role_id": 2
     }
   ],
   "roles": [
