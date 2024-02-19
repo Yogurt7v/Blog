@@ -17,7 +17,7 @@ const PostContainer = ({ className }) => {
 
     dispatch(loadPostAsync(requestServer ,params.id));
 
-  }, []);
+  }, [ dispatch, requestServer, params.id]);
 
   return (
     <div className={className}>
