@@ -6,7 +6,7 @@ const PostContainer = ({
   post: { id, title, imageUrl, content, publishedAt },
 }) => {
 
-  console.log("imageUrl", imageUrl);
+  console.log(imageUrl);
   return (
     <div className={className}>
       <img src={imageUrl} alt="ivan"></img>
