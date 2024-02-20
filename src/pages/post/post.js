@@ -14,17 +14,19 @@ const PostContainer = ({ className }) => {
   const requestServer = useServerRequest();
 
   useEffect(() => {
-
-    dispatch(loadPostAsync(requestServer ,params.id));
-
-  }, [ dispatch, requestServer, params.id]);
+    dispatch(loadPostAsync(requestServer, params.id));
+  }, [dispatch, requestServer, params.id]);
 
   return (
     <div className={className}>
-      <PostContent post = {post}/>
-      <Comments comments = {post.comments}/>
+      <PostContent post={post} />
+      <Comments comments={post.comments} />
     </div>
   );
 };
 
-export const Post = styled(PostContainer)``;
+export const Post = styled(PostContainer)`
+  display: flex;
+  flex-direction: column;
+  padding: 40px 60px;
+`;
