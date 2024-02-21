@@ -71,6 +71,7 @@ export const PostContent = styled(PostContainer)`
     align-items: center;
     justify-content: flex-end;
     gap: 20px;
+
   }
 
   & .post-text {
