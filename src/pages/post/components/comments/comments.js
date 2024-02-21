@@ -13,8 +13,8 @@ const CommentsContainer = ({ className, comments, postId }) => {
   const dispatch = useDispatch();
   const requestServer = useServerRequest();
 
-  const onNewCommentAdded = ( postId, userId, content) => {
-    dispatch(addCommentAsync(requestServer, postId, userId, content));
+  const onNewCommentAdded = ( userId, postId, content) => {
+    dispatch(addCommentAsync(requestServer, userId, postId, content));
   };
 
   return (
@@ -25,7 +25,8 @@ const CommentsContainer = ({ className, comments, postId }) => {
             name="comment"
             value={newComment}
             placeholder="Your comment..."
-            onChange={(target) => setNewComment(target.value)}
+            onChange={(e) => {
+              setNewComment(e.target.value)}}
           />
           <div className="icon" onClick={() => onNewCommentAdded(postId, userId, newComment)}>
             <Icon
@@ -41,7 +42,7 @@ const CommentsContainer = ({ className, comments, postId }) => {
               key={id}
               id={id}
               author={author}
-              contetnt={content}
+              content={content}
               publishedAt={publishedAt}
             />
           ))}
