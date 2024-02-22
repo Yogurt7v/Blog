@@ -1,13 +1,12 @@
 import { addComment, getPost, getComments } from "../api";
 import { ROLE } from "../constants/role";
 import { sessions } from "../sessions";
-export const addPostComment = async (hash,userId, postId, content) => {
+export const addPostComment = async (hash ,userId, postId, content) => {
 
   const accessRoles =[ROLE.ADMIN, ROLE.MODERATOR, ROLE.READER] 
 
   const access = await sessions.access(hash, accessRoles)
 
-  console.log(access);
 
   if (!access) {
     return {
@@ -17,7 +16,6 @@ export const addPostComment = async (hash,userId, postId, content) => {
   }
 
   await addComment(userId, postId, content);
-
   const post = await getPost(postId);
 
   const comments = await getComments(postId);

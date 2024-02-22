@@ -28,7 +28,7 @@ const CommentsContainer = ({ className, comments, postId }) => {
             onChange={(e) => {
               setNewComment(e.target.value)}}
           />
-          <div className="icon" onClick={() => onNewCommentAdded(postId, userId, newComment)}>
+          <div className="icon" onClick={() => onNewCommentAdded(userId,postId, newComment)}>
             <Icon
               id="fa-regular fa-paper-plane"
               size="16px"
