@@ -13,8 +13,10 @@ const CommentsContainer = ({ className, comments, postId }) => {
   const dispatch = useDispatch();
   const requestServer = useServerRequest();
 
+
   const onNewCommentAdded = ( userId, postId, content) => {
     dispatch(addCommentAsync(requestServer, userId, postId, content));
+    setNewComment("");
   };
 
   return (
@@ -53,7 +55,8 @@ const CommentsContainer = ({ className, comments, postId }) => {
 };
 
 export const Comments = styled(CommentsContainer)`
-  diplay: flex;
+  display: flex;
+  flex-direction: column;
   margin: 20px auto;
   width: 580px;
 

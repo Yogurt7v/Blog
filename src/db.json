@@ -93,11 +93,18 @@
   ],
   "comments": [
     {
-      "id": "8d2d",
-      "authorId": "001",
-      "post_id": "c463",
-      "publishedAt": "2033-05-26 18:23",
-      "content": "test comment"
+      "id": "3239",
+      "authorId": "c463",
+      "postId": "001",
+      "publishedAt": "2033-05-26 02:45",
+      "content": "мой первый комментарий\n"
+    },
+    {
+      "id": "f426",
+      "authorId": "c463",
+      "postId": "001",
+      "publishedAt": "2033-05-22 08:11",
+      "content": "второй комментарий"
     }
   ],
   "sessions": [
@@ -111,7 +118,17 @@
         "password": "qwerty123",
         "registeredAt": "2033-05-28 12:01"
       }
+    },
+    {
+      "id": "4fda",
+      "hash": "0.67405118643493100449859412037767469882965087890625",
+      "user": {
+        "id": "c463",
+        "login": "ivan",
+        "roleId": 1,
+        "password": "qwerty123",
+        "registeredAt": "2033-05-28 12:01"
+      }
     }
-    
   ]
 }

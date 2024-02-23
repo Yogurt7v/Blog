@@ -7,7 +7,7 @@ export const addComment = (userId, postId, content) =>
     },
     body: JSON.stringify({
       authorId: userId,
-      post_id: postId,
+      postId: postId,
       publishedAt: generatedDate(),
      content,
     }),

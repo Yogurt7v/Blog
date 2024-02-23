@@ -9,6 +9,7 @@ import styled from "styled-components";
 
 const PostContainer = ({ className }) => {
   const post = useSelector(selectPost);
+  
   const dispatch = useDispatch();
   const params = useParams();
   const requestServer = useServerRequest();
