@@ -16,6 +16,8 @@ const CommentContainer = ({
   const requestServer = useServerRequest();
 
   const onNewCommentRemove = (id) => {
+
+    console.log("onNewCommentRemove", id);
     dispatch(removeCommentAsync(requestServer, postId, id));
   };
 

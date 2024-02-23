@@ -7,6 +7,8 @@ export const removePostComment = async (hash, postId, id) => {
 
   const access = await sessions.access(hash, accessRoles)
 
+  console.log(postId, id);
+
 
   if (!access) {
     return {

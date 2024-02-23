@@ -107,16 +107,10 @@
       "content": "второй комментарий"
     },
     {
-      "id": "6e5b",
+      "id": "2ac9",
       "authorId": "001",
-      "postId": "f426",
-      "publishedAt": "2033-05-28 05:30"
-    },
-    {
-      "id": "6a56",
-      "authorId": "001",
-      "postId": "f426",
-      "publishedAt": "2033-05-21 13:08"
+      "postId": "abec",
+      "publishedAt": "2033-05-25 05:33"
     }
   ],
   "sessions": [
