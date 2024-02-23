@@ -9,15 +9,15 @@ const ModalContainer = ({className}) => {
     const onConform = useSelector(selectModalOnConform)
     const onCancel = useSelector(selectModalOnCancel)
 
-    // if (!isOpen) {
-    //     return null
-    // }
+    if (!isOpen) {
+        return null
+    }
 
     return (
         <div className={className}>
             <div className="overlay"></div>
             <div className="box">
-                <h3>Test{text}</h3>
+                <h3>{text}</h3>
                 <div className="buttons">
                     <Button width={"100px"} onClick={onConform}>Ок</Button>
                     <Button width={"100px"} onClick={onCancel}>Отмена</Button>
