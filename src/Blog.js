@@ -8,6 +8,7 @@ import { Users } from "./pages/users/users";
 import { useLayoutEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./actions/set-user.js";
+import { Modal } from "./components/modal/modal.js";
 
 const Page = styled.div`
   text-align: center;
@@ -58,6 +59,8 @@ function Blog() {
       </Page>
 
       <Footer />
+
+    <Modal/>
     </AppColumn>
   );
 }

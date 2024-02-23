@@ -1,7 +1,13 @@
 import { ACTION_TYPE } from "../actions";
 
 const initialAppState = {
-    wasLogout:false
+    wasLogout:false,
+    modal:{
+        isOpen:false,
+        text:"",
+        onConform: () => {},
+        onCancel:() => {},
+    }
 };
 export const appReducer = (state = initialAppState, action) => {
     switch (action.type) {
