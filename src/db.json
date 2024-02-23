@@ -128,6 +128,17 @@
         "password": "qwerty123",
         "registeredAt": "2033-05-28 12:01"
       }
+    },
+    {
+      "id": "10d6",
+      "hash": "0.14756730012448771027777638664701953530311584472656",
+      "user": {
+        "id": "c463",
+        "login": "ivan",
+        "roleId": 1,
+        "password": "qwerty123",
+        "registeredAt": "2033-05-28 12:01"
+      }
     }
   ]
 }
