@@ -7,9 +7,6 @@ export const removePostComment = async (hash, postId, id) => {
 
   const access = await sessions.access(hash, accessRoles)
 
-  console.log(postId, id);
-
-
   if (!access) {
     return {
       error: "Доступ запрещен",
@@ -18,7 +15,6 @@ export const removePostComment = async (hash, postId, id) => {
   }
 
   await deleteComment(id);
-
 
   const post = await getPost(postId);
 

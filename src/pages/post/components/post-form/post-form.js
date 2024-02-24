@@ -43,7 +43,7 @@ const PostFormContainer = ({
     <div className={className}>
     <Input defaultValue={imageUrl} ref={imageRef} placeholder="Путь к картинке"  className="input"/> 
     <Input defaultValue={title} ref ={titleRef} placeholder="Заголовок"  className="input"/> 
-    <SpecialPanel publishedAt={publishedAt} editButton ={
+    <SpecialPanel publishedAt={publishedAt} id={id} editButton ={
                 <div  onClick={() => onSave()}>
                   <Icon id="fa-regular fa-floppy-disk" size="16px"  margin="0 10px 0 0px"/>
                 </div>
