@@ -31,21 +31,23 @@ const specialPanelContainer = ({ className, id, publishedAt, editButton }) => {
   return (
     <div className={className}>
       <div className="special-panel">
-        <div className="published-at">
-          <Icon
-            id="fa-regular fa-calendar"
-            margin="0 10px 0 0px"
-            size="16px"
-            className="noPointer"
-          />
-        </div>
+        {publishedAt && (
+          <div className="published-at">
+            <Icon
+              id="fa-regular fa-calendar"
+              margin="0 10px 0 0px"
+              size="18px"
+              className="noPointer"
+            />
+          </div>
+        )}
         {publishedAt}
       </div>
       <div className="buttons">
         {editButton}
-        <div onClick={() => onPostRemove(id)}>
-          <Icon id="fa-solid fa-trash" size="16px" />
-        </div>
+        {publishedAt && <div onClick={() => onPostRemove(id)}>
+          <Icon id="fa-solid fa-trash" size="18px"  margin="0 0 0 10px"/>
+        </div>}
       </div>
     </div>
   );
@@ -66,6 +68,7 @@ export const SpecialPanel = styled(specialPanelContainer)`
 
     & .buttons {
       display: flex;
+      margin-bottom: 10px;
     }
 
     & .published-at {

@@ -45,20 +45,6 @@ export const PostContent = styled(PostContainer)`
     margin: 0 auto 20px;
   }
 
-  // & .panel-left {
-  //   display: flex;
-  //   align-items: center;
-  // }
-
-  // & .special-panel {
-  //   margin-bottom: 20px;
-  //   padding-right: 10px;
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   justify-content: space-between;
-  // }
-
   & .published-at {
     display: flex;
     float left;

@@ -44,8 +44,8 @@ const PostFormContainer = ({
     <Input defaultValue={imageUrl} ref={imageRef} placeholder="Путь к картинке"  className="input"/> 
     <Input defaultValue={title} ref ={titleRef} placeholder="Заголовок"  className="input"/> 
     <SpecialPanel publishedAt={publishedAt} id={id} editButton ={
-                <div  onClick={() => onSave()}>
-                  <Icon id="fa-regular fa-floppy-disk" size="16px"  margin="0 10px 0 0px"/>
+                <div  onClick={onSave}>
+                  <Icon id="fa-regular fa-floppy-disk" size="18px"  margin="0 0 0 10px"/>
                 </div>
     }/>
       <div className="post-text"  ref={contentRef} contentEditable={true} suppressContentEditableWarning={true}>{content}</div>
@@ -61,6 +61,7 @@ export const PostForm = styled(PostFormContainer)`
 
   & .input {
     width: 100%;
+    border: 1px solid black;
   }
 
   & img {
@@ -83,6 +84,10 @@ export const PostForm = styled(PostFormContainer)`
   & .post-text{
     text-align: justify;
     white-space: pre-wrap;
-
+    border-radius: 4px;
+    min-height: 80px;
+    border:1px solid black;
+    width: 100%;
   }
+
 `;
