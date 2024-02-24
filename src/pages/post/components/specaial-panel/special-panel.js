@@ -25,7 +25,6 @@ const specialPanelContainer = ({className, publishedAt ,editButton}) =>{
 export const SpecialPanel = styled(specialPanelContainer)`
     margin : ${({margin}) => margin};
     display: flex;
-    width: 100%;
     align-items: center; 
     justify-content: space-between;
 

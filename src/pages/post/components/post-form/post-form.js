@@ -3,20 +3,40 @@ import {  Icon,Input } from "../../../../components";
 import { SpecialPanel } from "../specaial-panel/special-panel";
 import { sanizeContent } from "./utils";
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { savePostAsync } from "../../../../actions";
+import { useNavigate } from "react-router-dom";
+import { useServerRequest } from "../../../../hooks";
 
 const PostFormContainer = ({
   className,
-  post: { title, imageUrl, content, publishedAt },
+  post: {id, title, imageUrl, content, publishedAt },
 }) => {
+
   const imageRef = useRef(null);
   const titleRef = useRef(null);
   const contentRef = useRef(null);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const requestServer = useServerRequest();
+
+  console.log(id);
 
   const onSave = () => {
     const newImageUrl = imageRef.current.value;
     const newTitle = titleRef.current.value;
     const newContent = sanizeContent(contentRef.current.innerHTML);
 
+
+    dispatch(
+      savePostAsync(requestServer,{
+      id,
+      imageUrl: newImageUrl,
+      title: newTitle,
+      content: newContent,
+    })
+    ).then(() => navigate(`/post/${id}`));
   }
 
   return (
