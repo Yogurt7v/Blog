@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import {  Icon,Input } from "../../../../components";
+import { Icon, Input } from "../../../../components";
 import { SpecialPanel } from "../specaial-panel/special-panel";
 import { sanizeContent } from "./utils";
-import { useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { savePostAsync } from "../../../../actions";
 import { useNavigate } from "react-router-dom";
@@ -10,45 +10,81 @@ import { useServerRequest } from "../../../../hooks";
 
 const PostFormContainer = ({
   className,
-  post: {id, title, imageUrl, content, publishedAt },
+  post: { id, title, imageUrl, content, publishedAt },
 }) => {
-
-  const imageRef = useRef(null);
-  const titleRef = useRef(null);
+  const [imageUrlValue, setImageUrlValue] = useState(imageUrl);
+  const [titleValue, setTitleValue] = useState(title);
   const contentRef = useRef(null);
+
+  useLayoutEffect(() => {
+    setImageUrlValue(imageUrl);
+    setTitleValue(title);
+  },[
+    imageUrl,
+    title,
+  ])
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const requestServer = useServerRequest();
 
-  console.log(id);
-
   const onSave = () => {
-    const newImageUrl = imageRef.current.value;
-    const newTitle = titleRef.current.value;
     const newContent = sanizeContent(contentRef.current.innerHTML);
 
-
     dispatch(
-      savePostAsync(requestServer,{
-      id,
-      imageUrl: newImageUrl,
-      title: newTitle,
-      content: newContent,
-    })
-    ).then(() => navigate(`/post/${id}`));
+      savePostAsync(requestServer, {
+        id,
+        imageUrl: imageUrlValue,
+        title: titleValue,
+        content: newContent,
+      })
+    ).then(({id}) => navigate(`/post/${id}`));
+  };
+
+  const onImageChange = ({target}) => {
+    setImageUrlValue(target.value);
   }
+
+  const onTitleChange = ({target}) => {
+    setTitleValue(target.value);
+  }
+
 
   return (
     <div className={className}>
-    <Input defaultValue={imageUrl} ref={imageRef} placeholder="Путь к картинке"  className="input"/> 
-    <Input defaultValue={title} ref ={titleRef} placeholder="Заголовок"  className="input"/> 
-    <SpecialPanel publishedAt={publishedAt} id={id} editButton ={
-                <div  onClick={onSave}>
-                  <Icon id="fa-regular fa-floppy-disk" size="18px"  margin="0 0 0 10px"/>
-                </div>
-    }/>
-      <div className="post-text"  ref={contentRef} contentEditable={true} suppressContentEditableWarning={true}>{content}</div>
+      <Input
+        value={imageUrlValue}
+        placeholder="Путь к картинке"
+        className="input"
+        onChange={onImageChange}
+      />
+      <Input
+        value={titleValue}
+        placeholder="Заголовок"
+        className="input"
+        onChange={onTitleChange}
+      />
+      <SpecialPanel
+        publishedAt={publishedAt}
+        id={id}
+        editButton={
+          <div onClick={onSave}>
+            <Icon
+              id="fa-regular fa-floppy-disk"
+              size="18px"
+              margin="0 0 0 10px"
+            />
+          </div>
+        }
+      />
+      <div
+        className="post-text"
+        ref={contentRef}
+        contentEditable={true}
+        suppressContentEditableWarning={true}
+      >
+        {content}
+      </div>
     </div>
   );
 };
@@ -81,13 +117,12 @@ export const PostForm = styled(PostFormContainer)`
     align-items: center;
   }
 
-  & .post-text{
+  & .post-text {
     text-align: justify;
     white-space: pre-wrap;
     border-radius: 4px;
     min-height: 80px;
-    border:1px solid black;
+    border: 1px solid black;
     width: 100%;
   }
-
 `;

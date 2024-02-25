@@ -9,7 +9,7 @@ import {
   selectUserRole,
   selectUserLogin,
   selectUserSession,
-} from "../../../..//selectors";
+} from "../../../../selectors";
 
 const RightAligned = styled.div`
   display: flex;

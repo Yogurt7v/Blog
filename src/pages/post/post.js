@@ -3,12 +3,13 @@ import { useParams, useMatch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { PostContent, Comments, PostForm } from "../../pages/post/components";
 import { useServerRequest } from "../../hooks";
-import { loadPostAsync } from "../../actions";
+import { loadPostAsync} from "../../actions";
 import { selectPost } from "../../selectors";
 import { RESET_POST_DATA } from "../../actions";
 import styled from "styled-components";
 
 const PostContainer = ({ className }) => {
+
   const post = useSelector(selectPost);
 
   const dispatch = useDispatch();
@@ -19,14 +20,12 @@ const PostContainer = ({ className }) => {
 
   useLayoutEffect(() => {
       dispatch(RESET_POST_DATA)
-  },[dispatch])
+  },[dispatch, isCreating]);
 
   useEffect(() => {
-
     if (isCreating) {
       return;
     }
-
     dispatch(loadPostAsync(requestServer, params.id));
   }, [dispatch, requestServer, params.id, isCreating]);
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Icon } from "../../../../components";
+import { Icon } from "../../../../components/";
 import { useDispatch } from "react-redux";
 import { removePostAsync, openModal, CLOSE_MODAL } from "../../../../actions";
 import { useServerRequest } from "../../../../hooks";

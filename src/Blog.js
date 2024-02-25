@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
-import { Header } from "./components/header/header.jsx";
-import { Footer } from "./components/footer/footer.jsx";
+import { Header,Footer } from "./components";
 import { Authorization, Registration, Post } from "./pages";
 import { H2 } from "./components/h2/h2";
 import { Users } from "./pages/users/users";
