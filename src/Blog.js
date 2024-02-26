@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
-import { Header,Footer } from "./components";
-import { Authorization, Registration, Post } from "./pages";
-import { H2 } from "./components/h2/h2";
+import { Header,Footer, Modal } from "./components";
+import { Authorization, Registration, Post, Main } from "./pages";
 import { Users } from "./pages/users/users";
 import { useLayoutEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./actions/set-user.js";
-import { Modal } from "./components/modal/modal.js";
+
 
 const Page = styled.div`
   text-align: center;
@@ -47,7 +46,7 @@ function Blog() {
 
       <Page>
         <Routes>
-          <Route path="/" element={<H2>Main</H2>} />
+          <Route path="/" element={<Main />} />
           <Route path="/login" element={<Authorization />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/users" element={<Users />} />
