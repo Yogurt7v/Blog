@@ -50,9 +50,7 @@ export const PostCard = styled(PostCardContainer)`
     align-items:;
     margin: 20px;
     border: 1px solid grey;
-
-
-
+    position: relative;
 
     & img{
         display: block;
@@ -80,7 +78,7 @@ export const PostCard = styled(PostCardContainer)`
 
     & .post-card-info{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         padding: 10px;
     }
@@ -89,12 +87,17 @@ export const PostCard = styled(PostCardContainer)`
     & .published-at{
         display: flex;
         align-items: center;
-
+        position: absolute;
+        bottom: 10px;
+        left: 15px;
     }
 
     & .comments-count{
         display: flex;
         align-items: center;
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
     }
 
 `;

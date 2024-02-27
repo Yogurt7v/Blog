@@ -10,6 +10,7 @@ import { setUser } from "./actions/set-user.js";
 
 const Page = styled.div`
   text-align: center;
+
   padding: 120px 0;
 `;
 
@@ -21,6 +22,7 @@ const AppColumn = styled.div`
   min-height: 100%;
   margin: 0 auto;
   background-color: white;
+  position: relative;
 `;
 
 function Blog() {

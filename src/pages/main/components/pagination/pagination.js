@@ -20,6 +20,9 @@ export const Pagination = styled(PaginationContainer)`
     display: flex;
     justify-content: center;
     text-align: center;
+    position: absolute;
+    bottom: 140px;
+    width: 100%;
     gap: 20px;
 
     Button{
