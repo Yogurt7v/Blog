@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { Button } from "../../../../components/button/button";
 
-const PaginationContainer = ({className, setPage, page}) =>{
+const PaginationContainer = ({className, setPage, lasPage, page}) =>{
 
 
     return (
         <div className={className}>
-            <Button onClick={() => setPage(1)}>В начало</Button>
-            <Button onClick={() => setPage(page-1)}>Предыдущая</Button>
+            <Button onClick={() => setPage(1)} className={page === 1 ? "disabled" : ""}>В начало</Button>
+            <Button onClick={() => setPage(page - 1)} className={page === 1 ? "disabled" : ""}>Предыдущая</Button>
             <div className="current-page">Страница: {page}</div>
-            <Button onClick={() => setPage(page+1)}>Следующая</Button>
-            <Button onClick={() => setPage(2)}>В конец</Button>
+            <Button onClick={() => setPage(page+1)} className={page === lasPage ? "disabled" : ""}>Следующая</Button>
+            <Button onClick={() => setPage(2)} className={page === lasPage ? "disabled" : ""}>В конец</Button>
         </div>
     )
 }
@@ -20,16 +20,24 @@ export const Pagination = styled(PaginationContainer)`
     display: flex;
     justify-content: center;
     text-align: center;
-    gap: 10px;
+    gap: 20px;
 
     Button{
         width: 100px;
     }
 
     & .current-page{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-weight: bold;
         width: 100px;
         height: 30px;
         text-align: center;
     }
+
+    & .disabled {
+        pointer-events: none;
+        opacity: 0.5;
+      }
 `

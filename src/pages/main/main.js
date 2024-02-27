@@ -3,15 +3,19 @@ import { PostCard, Pagination } from "./components";
 import { useServerRequest } from "../../hooks";
 import styled from "styled-components";
 import { PAGINATION_LIMIT } from "../../constants";
+import { getLastPageFromLinks } from "./utils";
 
 const MainContainer = ({ className }) => {
   const [posts, setPosts] = useState([]);
   const requestServer = useServerRequest();
-  const [page,setPage] = useState(1)
+  const [page , setPage] = useState(1)
+  const [lasPage, setLastPage] = useState(1);
 
     useEffect(() => {
-    requestServer(`fetchPosts`, page, PAGINATION_LIMIT).then((posts) => {
-      setPosts(posts.res);
+    requestServer(`fetchPosts`, page, PAGINATION_LIMIT).then(({res: {posts , links}}) => {
+      setPosts(posts);
+      console.log(getLastPageFromLinks(links));
+      setLastPage(getLastPageFromLinks(links));
     });
   }, [requestServer, page]);
 
@@ -30,7 +34,7 @@ const MainContainer = ({ className }) => {
         />
       ))}
       </div>
-      <Pagination setPage={setPage}/>
+      { lasPage >1 ? <Pagination setPage={setPage} page={page} lasPage={lasPage}/> : null}
     </div>
   );
 };
