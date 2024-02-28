@@ -1,28 +1,40 @@
-import { getPost, getComments , getUsers} from "../api";
+import { getPost, getComments, getUsers } from "../api";
 
 export const fetchPost = async (postId) => {
-    
-    const post = await getPost(postId);
-    
-    const comments = await getComments(postId);
+  let post;
+  let error;
 
-    const users = await getUsers();
+  try {
+    post = await getPost(postId);
+  } catch(postError) {
+    error = postError;
+  }
 
-    const commentsWithAuthor = comments.map((comment) => {
+  if (error) {
+    return {
+      error,
+      res:null,
+    }
+  }
 
-      const user = users.find(({id}) => id === comment.authorId)
+  const comments = await getComments(postId);
 
-        return{
-            ...comment,
-            author: user?.login,
-        }
-    })
+  const users = await getUsers();
+
+  const commentsWithAuthor = comments.map((comment) => {
+    const user = users.find(({ id }) => id === comment.authorId);
 
     return {
-      error: null,
-      res: {
-        ...post,
-        comments: commentsWithAuthor
-      }, 
+      ...comment,
+      author: user?.login,
     };
-  }
+  });
+
+  return {
+    error: null,
+    res: {
+      ...post,
+      comments: commentsWithAuthor,
+    },
+  };
+};
