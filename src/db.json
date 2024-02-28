@@ -121,12 +121,6 @@
       "content": "мой первый комментарий\n"
     },
     {
-      "id": "2ac9",
-      "authorId": "001",
-      "postId": "abec",
-      "publishedAt": "2033-05-25 05:33"
-    },
-    {
       "id": "265e",
       "authorId": "001",
       "postId": "001",
@@ -136,70 +130,15 @@
   ],
   "sessions": [
     {
-      "id": "2baa",
-      "hash": "0.48368420865261785301925101521192118525505065917969",
-      "user": {
-        "id": "c463",
-        "login": "ivan",
-        "roleId": 1,
-        "password": "qwerty123",
-        "registeredAt": "2033-05-28 12:01"
-      }
-    },
-    {
-      "id": "4fda",
-      "hash": "0.67405118643493100449859412037767469882965087890625",
-      "user": {
-        "id": "c463",
-        "login": "ivan",
-        "roleId": 1,
-        "password": "qwerty123",
-        "registeredAt": "2033-05-28 12:01"
-      }
-    },
-    {
-      "id": "10d6",
-      "hash": "0.14756730012448771027777638664701953530311584472656",
-      "user": {
-        "id": "c463",
-        "login": "ivan",
-        "roleId": 1,
-        "password": "qwerty123",
-        "registeredAt": "2033-05-28 12:01"
-      }
-    },
-    {
-      "id": "c91e",
-      "hash": "0.85761311931859496304753065487602725625038146972656",
+      "hash": "0.39256718127613532409725394245469942688941955566406",
       "user": {
         "id": "001",
         "login": "loginMaster",
         "roleId": 0,
         "password": "passWord8",
         "registeredAt": "06.02.2024"
-      }
-    },
-    {
-      "id": "2ece",
-      "hash": "0.99811770410067923720021099143195897340774536132813",
-      "user": {
-        "id": "001",
-        "login": "loginMaster",
-        "roleId": 0,
-        "password": "passWord8",
-        "registeredAt": "06.02.2024"
-      }
-    },
-    {
-      "id": "478f",
-      "hash": "0.86228728263771925455216660338919609785079956054688",
-      "user": {
-        "id": "001",
-        "login": "loginMaster",
-        "roleId": 0,
-        "password": "passWord8",
-        "registeredAt": "06.02.2024"
-      }
+      },
+      "id": 1
     }
   ]
 }

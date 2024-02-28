@@ -80,7 +80,7 @@ const ControlPanelContainer = ({ className }) => {
         </Link>
         <Link to="/users">
           <Icon
-            id="fa-solid fa-user-plus"
+            id="fa-solid fa-users"
             size="24px"
             margin="10px 5px 10px 0"
           />
