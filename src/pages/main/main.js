@@ -71,6 +71,7 @@ export const Main = styled(MainContainer)`
     display: flex;
     flex-wrap: wrap;
     flex: 1 0 auto;
+
   }
 
   & .no-posts {

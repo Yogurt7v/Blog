@@ -1,17 +1,20 @@
 import { useState } from "react";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "../../../../components/icon/icon";
 import { Comment } from "./comment/comment";
 import { useServerRequest } from "../../../../hooks";
 import { addCommentAsync } from "../../../../actions";
 import { selectUserId } from "../../../../selectors";
+import { selectUserRole } from "../../../../selectors";
+import { ROLE } from "../../../../constants/role";
+import styled from "styled-components";
 
 const CommentsContainer = ({ className, comments, postId }) => {
   const [newComment, setNewComment] = useState("");
   const userId = useSelector(selectUserId);
   const dispatch = useDispatch();
   const requestServer = useServerRequest();
+  const userRole = useSelector(selectUserRole);
 
 
   const onNewCommentAdded = ( userId, postId, content) => {
@@ -19,9 +22,13 @@ const CommentsContainer = ({ className, comments, postId }) => {
     setNewComment("");
   };
 
+  const isGuest = userRole === ROLE.GUEST;
+
   return (
     <>
       <div className={className}>
+        {!isGuest && 
+        <>
         <div className="new-comment">
           <textarea
             name="comment"
@@ -38,6 +45,7 @@ const CommentsContainer = ({ className, comments, postId }) => {
             />
           </div>
         </div>
+        </>}
         <div className="comments">
           {comments.map(({ id, author, content, publishedAt }) => (
             <Comment

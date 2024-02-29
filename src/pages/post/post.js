@@ -8,6 +8,7 @@ import { loadPostAsync } from "../../actions";
 import { selectPost } from "../../selectors";
 import { RESET_POST_DATA } from "../../actions";
 import { ROLE } from "../../constants/role";
+
 import styled from "styled-components";
 
 const PostContainer = ({ className }) => {
@@ -20,6 +21,7 @@ const PostContainer = ({ className }) => {
   const isCreating = !!useMatch(`/post`);
   const isEditing = !!useMatch(`/post/:id/edit`);
   const requestServer = useServerRequest();
+
 
   useLayoutEffect(() => {
     dispatch(RESET_POST_DATA);
@@ -39,6 +41,8 @@ const PostContainer = ({ className }) => {
   if (isLoading) {
     return null;
   }
+
+
 
   const SpecificPostPage = 
     isCreating || isEditing ? (

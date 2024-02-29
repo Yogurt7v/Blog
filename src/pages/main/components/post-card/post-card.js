@@ -51,6 +51,7 @@ export const PostCard = styled(PostCardContainer)`
     margin: 20px;
     border: 1px solid grey;
     position: relative;
+    box-shadow: 0px 5px 10px 5px rgba(34, 60, 80, 0.2);
 
     & img{
         display: block;

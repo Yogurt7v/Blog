@@ -41,6 +41,8 @@ export const Pagination = styled(PaginationContainer)`
 
     & .disabled {
         pointer-events: none;
-        opacity: 0.5;
+        background-color: white;
+        border: 1px solid grey;
+        opacity: 0.35;
       }
 `
