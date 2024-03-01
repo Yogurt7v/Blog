@@ -4,7 +4,7 @@ import { Icon } from "../../../../components/icon/icon";
 const SearchContainer = ({className, searchPhrase, onChange}) =>{
     return (
         <div className={className}>
-            <input value={searchPhrase} type="text" placeholder="Поиск по заголовкам" onChange={onChange}/>
+            <input value={searchPhrase} type="text" placeholder="Поиск по заголовкам..." onChange={onChange}/>
             <Icon id="fa-solid fa-magnifying-glass" size="20px" margin="0 5px 0 10px" className="noPointer"/>
         </div>
     )
@@ -29,7 +29,7 @@ export const Search = styled(SearchContainer)`
         height: 35px;
         padding-right: 38px;
         padding-left: 10px;
-        font-size: 18px;
+        font-size: 14px;
     }
     &::placeholder{
         color: grey;
