@@ -142,5 +142,17 @@
       "id": "Boqmqt2"
     }
   ],
-  "sessions": []
+  "sessions": [
+    {
+      "hash": "0.67798296024924709080039519903948530554771423339844",
+      "user": {
+        "id": "001",
+        "login": "loginMaster",
+        "roleId": 0,
+        "password": "passWord8",
+        "registeredAt": "06.02.2024"
+      },
+      "id": 1
+    }
+  ]
 }

@@ -4,10 +4,11 @@ import { Icon } from "../../../../components/icon/icon";
 import { Comment } from "./comment/comment";
 import { useServerRequest } from "../../../../hooks";
 import { addCommentAsync } from "../../../../actions";
-import { selectUserId } from "../../../../selectors";
-import { selectUserRole } from "../../../../selectors";
+import { selectUserId, selectUserRole } from "../../../../selectors";
 import { ROLE } from "../../../../constants/role";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+import { PROP_TYPE } from "../../../../constants/prop-type";
 
 const CommentsContainer = ({ className, comments, postId }) => {
   const [newComment, setNewComment] = useState("");
@@ -16,8 +17,7 @@ const CommentsContainer = ({ className, comments, postId }) => {
   const requestServer = useServerRequest();
   const userRole = useSelector(selectUserRole);
 
-
-  const onNewCommentAdded = ( userId, postId, content) => {
+  const onNewCommentAdded = (userId, postId, content) => {
     dispatch(addCommentAsync(requestServer, userId, postId, content));
     setNewComment("");
   };
@@ -27,25 +27,30 @@ const CommentsContainer = ({ className, comments, postId }) => {
   return (
     <>
       <div className={className}>
-        {!isGuest && 
-        <>
-        <div className="new-comment">
-          <textarea
-            name="comment"
-            value={newComment}
-            placeholder="Your comment..."
-            onChange={(e) => {
-              setNewComment(e.target.value)}}
-          />
-          <div className="icon" onClick={() => onNewCommentAdded(userId,postId, newComment)}>
-            <Icon
-              id="fa-regular fa-paper-plane"
-              size="16px"
-              margin="0 0 0 10px"
-            />
-          </div>
-        </div>
-        </>}
+        {!isGuest && (
+          <>
+            <div className="new-comment">
+              <textarea
+                name="comment"
+                value={newComment}
+                placeholder="Your comment..."
+                onChange={(e) => {
+                  setNewComment(e.target.value);
+                }}
+              />
+              <div
+                className="icon"
+                onClick={() => onNewCommentAdded(userId, postId, newComment)}
+              >
+                <Icon
+                  id="fa-regular fa-paper-plane"
+                  size="16px"
+                  margin="0 0 0 10px"
+                />
+              </div>
+            </div>
+          </>
+        )}
         <div className="comments">
           {comments.map(({ id, author, content, publishedAt }) => (
             <Comment
@@ -90,3 +95,8 @@ export const Comments = styled(CommentsContainer)`
     padding: 10px 0 0 10px;
   }
 `;
+
+Comments.propTypes = {
+  comments: PropTypes.arrayOf(PROP_TYPE.COMMENT).isRequired,
+  postId: PropTypes.string.isRequired,
+}

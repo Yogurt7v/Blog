@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { H2 } from "../../../../components/h2/h2";
-import { Icon } from "../../../../components/icon/icon";
+import { H2 , Icon} from "../../../../components";
 import { SpecialPanel } from "../specaial-panel/special-panel";
 import { useNavigate } from "react-router-dom";
+import { PROP_TYPE } from "../../../../constants";
+
 
 const PostContainer = ({
   className,
@@ -62,3 +63,8 @@ export const PostContent = styled(PostContainer)`
     text-align: justify;
   }
 `;
+
+
+PostContent.propTypes = {
+  post: PROP_TYPE.POST
+}

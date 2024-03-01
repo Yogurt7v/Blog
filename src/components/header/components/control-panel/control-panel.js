@@ -50,7 +50,7 @@ const ControlPanelContainer = ({ className }) => {
       <RightAligned>
         {roleId === ROLE.GUEST ? (
           <Button width={"100px"} onClick={() => nav("/login")}>
-            <Link to="/login">Войти <i class="fa-solid fa-circle-chevron-right"></i></Link>
+            <Link to="/login">Войти <i id="fa-solid fa-circle-chevron-right"></i></Link>
           </Button>
         ) : (
           <>

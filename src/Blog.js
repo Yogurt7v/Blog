@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
 import { Header,Footer, Modal, Error } from "./components";
 import { Authorization, Registration, Post, Main } from "./pages";
@@ -7,6 +6,7 @@ import { Users } from "./pages/users/users";
 import { useLayoutEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./actions/set-user.js";
+import styled from "styled-components";
 
 
 const Page = styled.div`
@@ -46,7 +46,6 @@ function Blog() {
   return (
     <AppColumn>
       <Header />
-
       <Page>
         <Routes>
           <Route path="/" element={<Main />} />
@@ -60,12 +59,11 @@ function Blog() {
           <Route path="*" element={<Error error={ERROR.PAGE_NOT_EXIST} />} />
         </Routes>
       </Page>
-
       <Footer />
-
-    <Modal/>
+      <Modal/>
     </AppColumn>
   );
 }
 
 export default Blog;
+

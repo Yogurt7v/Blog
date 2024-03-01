@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { Icon } from "../../../../../components/icon/icon";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -9,6 +8,8 @@ import {
 import { ROLE } from "../../../../../constants/role";
 import { useServerRequest } from "../../../../../hooks";
 import { selectUserRole } from "../../../../../selectors";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const CommentContainer = ({
   className,
@@ -122,3 +123,11 @@ export const Comment = styled(CommentContainer)`
     font-size: 12px;
   }
 `;
+
+Comment.propTypes ={
+  postId: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  author: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired
+}

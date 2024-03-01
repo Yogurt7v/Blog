@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { Icon } from "../../../../components/";
 import { useDispatch, useSelector } from "react-redux";
 import { removePostAsync, openModal, CLOSE_MODAL } from "../../../../actions";
@@ -7,6 +6,8 @@ import { checkAccess } from "../../../../utils";
 import { ROLE } from "../../../../constants/role";
 import { useNavigate } from "react-router-dom";
 import { selectUserRole } from "../../../../selectors";
+import PropsTypes from "prop-types";
+import styled from "styled-components";
 
 const specialPanelContainer = ({ className, id, publishedAt, editButton }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -89,3 +90,9 @@ export const SpecialPanel = styled(specialPanelContainer)`
     
   
 `;
+
+SpecialPanel.PropsTypes = {
+  id: PropsTypes.string.isRequired, 
+  publishedAt: PropsTypes.string.isRequired,
+  editButton: PropsTypes.node.isRequired
+}

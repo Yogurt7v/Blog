@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from "prop-types"; 
 import { Button } from "../../../../components/button/button";
 
 const PaginationContainer = ({className, setPage, lasPage, page}) =>{
@@ -46,3 +47,10 @@ export const Pagination = styled(PaginationContainer)`
         opacity: 0.35;
       }
 `
+
+
+Pagination.propTypes = {
+    page: PropTypes.number.isRequired,
+    setPage: PropTypes.func.isRequired,
+    lasPage: PropTypes.number.isRequired,
+}
