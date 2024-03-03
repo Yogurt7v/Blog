@@ -1,2 +1,2 @@
 export * from './logo/Logo'
-export * from './control-panel/controlePanel.jsx'
+export * from './control-panel/control-panel'

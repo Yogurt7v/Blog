@@ -1,17 +1,17 @@
-import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
-import { Header } from "./components/header/header.jsx";
-import { Footer } from "./components/footer/footer.jsx";
-import { Authorization, Registration, Post } from "./pages";
-import { H2 } from "./components/h2/h2";
+import { Header,Footer, Modal, Error } from "./components";
+import { Authorization, Registration, Post, Main } from "./pages";
+import { ERROR } from "./constants/error.js";
 import { Users } from "./pages/users/users";
 import { useLayoutEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./actions/set-user.js";
-import { Modal } from "./components/modal/modal.js";
+import styled from "styled-components";
+
 
 const Page = styled.div`
   text-align: center;
+
   padding: 120px 0;
 `;
 
@@ -23,6 +23,7 @@ const AppColumn = styled.div`
   min-height: 100%;
   margin: 0 auto;
   background-color: white;
+  position: relative;
 `;
 
 function Blog() {
@@ -45,24 +46,24 @@ function Blog() {
   return (
     <AppColumn>
       <Header />
-
       <Page>
         <Routes>
-          <Route path="/" element={<H2>Main</H2>} />
+          <Route path="/" element={<Main />} />
           <Route path="/login" element={<Authorization />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/post/" element={<div>New Post</div>} />
+          <Route path="/post" element={<Post />} />
           <Route path="/post/:id" element={<Post />} />
-          <Route path="*" element={<div>Error Page</div>} />
+          <Route path="/post/:id/edit" element={<Post />} />
+          <Route path="/post/:id/*" element={<Error />} />
+          <Route path="*" element={<Error error={ERROR.PAGE_NOT_EXIST} />} />
         </Routes>
       </Page>
-
       <Footer />
-
-    <Modal/>
+      <Modal/>
     </AppColumn>
   );
 }
 
 export default Blog;
+

@@ -1,5 +1,6 @@
-import { H2 } from "../../components/h2/h2";
+import { H2 } from "../h2/h2";
 import styled from "styled-components";
+import {PROP_TYPE } from "../../constants";
 
 const Div = styled.div`
   display: flex;
@@ -7,12 +8,15 @@ const Div = styled.div`
   align-items: center;
 `;
 
-export const Content = ({ children, error }) =>
-  error ? (
+export const Error = ({  error }) => 
+  error && (
     <Div>
       <H2>Ошибка</H2>
       <div>{error}</div>
     </Div>
-  ) : (
-    children
-  );
+  )
+
+
+  Error.propTypes = {
+        error: PROP_TYPE.ERROR,
+  }

@@ -1,35 +1,33 @@
 import styled from "styled-components";
-import { H2 } from "../../../../components/h2/h2";
-import { Icon } from "../../../../components/icon/icon";
+import { H2 , Icon} from "../../../../components";
+import { SpecialPanel } from "../specaial-panel/special-panel";
+import { useNavigate } from "react-router-dom";
+import { PROP_TYPE } from "../../../../constants";
+
 
 const PostContainer = ({
   className,
   post: { id, title, imageUrl, content, publishedAt },
 }) => {
+  const navigate = useNavigate();
+
   return (
     <div className={className}>
       <img src={imageUrl} alt={title}></img>
       <H2>{title}</H2>
-      <div className="special-panel">
-        <div className="panel-left">
-          <div className="published-at">
+      <SpecialPanel
+        id={id}
+        publishedAt={publishedAt}
+        editButton={
+          <div onClick={() => navigate(`/post/${id}/edit`)}>
             <Icon
-              id="fa-regular fa-calendar"
-              margin="0 10px 0 10px"
+              id="fa-regular fa-pen-to-square"
               size="16px"
-              onClick={() => {
-                /*TODO*/
-              }}
+              margin="0 10px 0 0px"
             />
           </div>
-          {publishedAt}{" "}
-        </div>
-        <div className="panel-icons">
-          <Icon id="fa-solid fa-pen-to-square" size="16px" />
-          <Icon id="fa-solid fa-trash" size="16px" />
-        </div>
-      </div>
-
+        }
+      />
       <div className="post-text">{content}</div>
     </div>
   );
@@ -48,18 +46,6 @@ export const PostContent = styled(PostContainer)`
     margin: 0 auto 20px;
   }
 
-  & .panel-left {
-    display: flex;
-    align-items: center;
-  }
-
-  & .special-panel {
-      margin-bottom: 20px;
-      padding-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
   & .published-at {
     display: flex;
     float left;
@@ -77,3 +63,8 @@ export const PostContent = styled(PostContainer)`
     text-align: justify;
   }
 `;
+
+
+PostContent.propTypes = {
+  post: PROP_TYPE.POST
+}

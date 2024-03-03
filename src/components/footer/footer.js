@@ -6,6 +6,7 @@ const FooterContainer = ({ className }) => {
   const [temp, setTemp] = useState("");
   const [place, setPlace] = useState("");
   const [condition, setCondition] = useState("");
+  let conditionResult = condition.charAt(0).toUpperCase() + condition.slice(1);
 
   useEffect(() => {
     fetch("https://api.openweathermap.org/data/2.5/weather?lat=59.92640431085751&lon=30.296051165519195&units=metric&&lang=ru&appid=69e143aa53dee6d7219166f57c1b9e0b")
@@ -27,7 +28,7 @@ const FooterContainer = ({ className }) => {
         <div>
           <div>{new Date().toLocaleDateString("ru", {day: "numeric", month: "long"})}</div>
           <div>{place}</div>
-          <div>{condition} t:{temp}°C</div>
+          <div>{conditionResult}, t:  {temp}°C</div>
         </div>
       </div>
     </>
