@@ -21,16 +21,8 @@ npm start
 Запустить API (порт 3004):
 
 ```bash
-npx json-server --watch src/db.json --port 3004 --cors
+npx json-server --watch src/db.json --port 3004
 ```
-
-Можно добавить скрипт в `package.json`:
-
-```json
-"dev:api": "json-server --watch src/db.json --port 3004 --cors"
-```
-
-и запускать так:
 
 ```bash
 npm run dev:api
@@ -43,11 +35,6 @@ npm run dev:api
 - `src/pages/main` – главная: список постов, поиск, пагинация
 - `src/db.json` – мок-БД для `json-server`
 
-Основные потоки
----------------
-
-- Загрузка постов: `Main` → `useServerRequest` → `server.fetchPosts` → `get-posts`
-- Комментарии загружаются параллельно для расчёта `commentsCount`
 
 Окружение
 ---------
