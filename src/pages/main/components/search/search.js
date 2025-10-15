@@ -26,18 +26,21 @@ export const Search = styled(SearchContainer)`
   justify-content: center;
   align-items: center;
   margin: 20px auto;
-  width: 300px;
-  height: 35px;
+  width: 100%;
+  max-width: 480px;
+  height: 36px;
 
   outline: none;
   position: relative;
 
   & input {
-    width: 300px;
-    height: 35px;
+    width: 100%;
+    height: 36px;
     padding-right: 38px;
-    padding-left: 10px;
+    padding-left: 12px;
     font-size: 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
   }
   &::placeholder {
     color: grey;
@@ -46,7 +49,11 @@ export const Search = styled(SearchContainer)`
   & .noPointer {
     position: absolute;
     right: 10px;
-    cursor: none;
+    cursor: default;
+  }
+
+  @media (max-width: 480px) {
+    margin: 16px 12px;
   }
 `;
 

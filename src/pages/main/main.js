@@ -71,6 +71,8 @@ export const Main = styled(MainContainer)`
     display: flex;
     flex-wrap: wrap;
     flex: 1 0 auto;
+    gap: 0px;
+    justify-content: center;
 
   }
 
@@ -84,5 +86,13 @@ export const Main = styled(MainContainer)`
     margin: 0 auto;
     padding: 24px;
     font-size: 18px;
+  }
+
+  @media (max-width: 900px) {
+    padding: 16px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 12px 8px 16px 8px;
   }
 `;

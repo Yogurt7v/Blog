@@ -20,14 +20,14 @@ const PaginationContainer = ({className, setPage, lasPage, page}) =>{
 export const Pagination = styled(PaginationContainer)`
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    position: absolute;
-    bottom: 140px;
     width: 100%;
-    gap: 20px;
+    gap: 12px;
+    padding: 16px 0 24px 0;
 
     Button{
-        width: 100px;
+        width: 110px;
     }
 
     & .current-page{
@@ -35,8 +35,8 @@ export const Pagination = styled(PaginationContainer)`
         justify-content: center;
         align-items: center;
         font-weight: bold;
-        width: 100px;
-        height: 30px;
+        width: 110px;
+        height: 32px;
         text-align: center;
     }
 
@@ -46,6 +46,21 @@ export const Pagination = styled(PaginationContainer)`
         border: 1px solid grey;
         opacity: 0.35;
       }
+
+    @media (max-width: 600px) {
+        flex-wrap: wrap;
+        gap: 8px;
+
+        Button{
+            width: calc(50% - 8px);
+            min-width: 140px;
+        }
+
+        & .current-page{
+            width: 100%;
+            order: -1;
+        }
+    }
 `
 
 

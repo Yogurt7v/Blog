@@ -48,58 +48,78 @@ export const PostCard = styled(PostCardContainer)`
     height: 330px;
     display: flex;
     flex-direction: column;
-    align-items:;
     margin: 20px;
     border: 1px solid grey;
     position: relative;
-    box-shadow: 0px 5px 10px 5px rgba(34, 60, 80, 0.2);
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0px 5px 10px 5px rgba(34, 60, 80, 0.12);
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0px 8px 16px 6px rgba(34, 60, 80, 0.18);
+    }
 
     & img{
         display: block;
         width: 100%;
         height: 200px;
-
+        object-fit: cover;
     }
 
-    &. noPointer{
-        cursor: none;
+    & .noPointer{
+        cursor: default;
     }
 
     & .post-card-footer{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        border-top: 1px solid grey;
+        border-top: 1px solid #eee;
+        background: #fff;
+        min-height: 130px;
     }
 
     & h4 {
         margin: 0px;
-        padding: 10px;
+        padding: 10px 12px 8px 12px;
         text-align: left;
+        font-size: 16px;
+        line-height: 1.3;
+        max-height: 52px;
+        overflow: hidden;
     }
 
     & .post-card-info{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
-        padding: 10px;
+        padding: 10px 12px 12px 12px;
     }
 
 
     & .published-at{
         display: flex;
         align-items: center;
-        position: absolute;
-        bottom: 10px;
-        left: 15px;
+        gap: 6px;
     }
 
     & .comments-count{
         display: flex;
         align-items: center;
-        position: absolute;
-        bottom: 10px;
-        right: 15px;
+        gap: 6px;
+    }
+
+    @media (max-width: 900px) {
+        width: calc(50% - 40px);
+        height: 320px;
+    }
+
+    @media (max-width: 600px) {
+        width: calc(100% - 40px);
+        height: auto;
     }
 
 `;
